@@ -54,6 +54,10 @@ Return the distance centrality of a given vertex.
 
 An alias of DistanceCentrality().
 
+=item GraphCentrality($vertex)
+
+Return the graph centrality of a given vertex.
+
 =item edges(@vertices)
 
 Return a list of edges that connets any two of @vertices.

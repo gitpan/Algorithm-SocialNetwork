@@ -1,7 +1,7 @@
 package Algorithm::SocialNetwork;
 use Spiffy -Base;
 use Quantum::Superpositions;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 field graph => {},
     -init => 'Graph->new()';
@@ -62,6 +62,17 @@ sub ClosenessCentrality {
 }
 
 *DistanceCentrality = \&ClosenessCentrality;
+
+sub GraphCentrality {
+    my $vertex = shift;
+    my $sp = $self->graph->SPT_Dijkstra(first_root => $vertex);
+    my $s = -1;
+    for(map { $sp->path_length($vertex,$_) || 0 }
+            $self->graph->vertices) {
+        $s = $_ if $_ > $s;
+    }
+    return 1/$s;
+}
 
 ### edges between given nodes.
 sub edges {
