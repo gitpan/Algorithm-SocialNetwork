@@ -1,5 +1,5 @@
 name: Algorithm-SocialNetwork
-version: 0.05
+version: 0.06
 abstract: Social Network Analysis
 author: Kang-min Liu <gugod@gugod.org>
 license: perl
@@ -9,6 +9,7 @@ build_requires:
 requires:
   Spiffy: 0.21
   Graph: 0.54
+  Quantum::Superpositions: 0
 no_index:
   directory:
     - inc

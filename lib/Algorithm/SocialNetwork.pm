@@ -1,7 +1,7 @@
 package Algorithm::SocialNetwork;
 use Spiffy -Base;
 use Quantum::Superpositions;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 field graph => {},
     -init => 'Graph->new()';
