@@ -13,3 +13,6 @@ MANIFEST			This list of files
 META.yml
 t/00.use.t
 t/01.simple.t
+t/02.edges.t
+t/03.clustering_coefficient.t
+t/04.closeness_centrality.t

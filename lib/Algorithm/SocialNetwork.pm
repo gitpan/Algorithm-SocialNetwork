@@ -1,6 +1,7 @@
 package Algorithm::SocialNetwork;
 use Spiffy -Base;
-our $VERSION = '0.02';
+use Quantum::Superpositions;
+our $VERSION = '0.04';
 
 field graph => {},
     -init => 'Graph->new()';
@@ -39,6 +40,34 @@ sub BetweenessCentrality {
             $CB{$w} += $rho{$w} unless $w eq $s;
         }
     }
-    return $CB{$_} for(@_);
     return @_? @CB{@_} : \%CB;
+}
+
+sub ClusteringCoefficient {
+    my $vertex = shift;
+    my @kv = $self->graph->neighbors($vertex);
+    return unless @kv > 1;
+    my $edges = $self->edges(@kv);
+    return ($edges / ( @kv * (@kv - 1)));
+}
+
+sub ClosenessCentrality {
+    my $vertex = shift;
+    my $sp = $self->graph->SPT_Dijkstra(first_root => $vertex);
+    my $s = 0;
+    for($self->graph->vertices) {
+        $s += $sp->path_length($vertex,$_) || 0;
+    }
+    return 1/$s;
+}
+
+*DistanceCentrality = \&ClosenessCentrality;
+
+### edges between given nodes.
+sub edges {
+    my @nodes = @_;
+    my @edges = grep {
+        all(@$_) eq any(@nodes)
+    } $self->graph->edges;
+    return @edges;
 }

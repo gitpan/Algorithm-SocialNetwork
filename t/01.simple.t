@@ -13,3 +13,10 @@ my $BC = $algo->BetweenessCentrality();
 is($BC->{a},0);
 is($BC->{b},2);
 is($BC->{c},0);
+
+is($algo->BetweenessCentrality('b'),2);
+
+my @BCab = $algo->BetweenessCentrality('a','b');
+my @wanted = (0,2);
+eq_array(\@BCab,\@wanted);
+

@@ -5,7 +5,7 @@ abstract        ('Social Network Analysis');
 author          ('Kang-min Liu <gugod@gugod.org>');
 license         ('perl');
 version_from    ('lib/Algorithm/SocialNetwork.pm');
-requires        ('Spiffy');
+requires        ('Spiffy' => 0.21);
 requires        ('Graph' => 0.54);
 build_requires  ('Test::More');
 

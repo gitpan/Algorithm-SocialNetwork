@@ -42,6 +42,22 @@ parameter $vertex is given, return the BetwenessCentrality value of
 that vertex, otherwise, return all vertice's BetweenessCentrality
 value, stored in a hash, which hash node name as keys.
 
+=item ClusteringCoefficient($vertex)
+
+Return the clustering coefficient of a given vertex.
+
+=item DistanceCentrality($vertex)
+
+Return the distance centrality of a given vertex.
+
+=item ClosenessCentrality($vertex)
+
+An alias of DistanceCentrality().
+
+=item edges(@vertices)
+
+Return a list of edges that connets any two of @vertices.
+
 =back
 
 =head1 SEE ALSO
