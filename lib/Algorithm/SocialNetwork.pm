@@ -1,7 +1,7 @@
 package Algorithm::SocialNetwork;
 use Spiffy -Base;
 use Quantum::Superpositions;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 field graph => {},
     -init => 'Graph->new()';
@@ -49,6 +49,17 @@ sub ClusteringCoefficient {
     return unless @kv > 1;
     my $edges = $self->edges(@kv);
     return ($edges / ( @kv * (@kv - 1)));
+}
+
+sub WeightedClusteringCoefficient {
+    my $vertex = shift;
+    my @kv = $self->graph->neighbors($vertex);
+    return unless @kv > 1;
+    my $weight = 0;
+    for($self->edges(@kv)) {
+        $weight += $self->graph->get_edge_weight(@$_) || 1;
+    }
+    return ($weight / ( @kv * (@kv - 1)));
 }
 
 sub ClosenessCentrality {

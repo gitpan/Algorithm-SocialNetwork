@@ -17,3 +17,4 @@ t/02.edges.t
 t/03.clustering_coefficient.t
 t/04.closeness_centrality.t
 t/05.graph_centrality.t
+t/06.weighted_clustering_coefficient.t
